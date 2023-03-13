@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button   (click)="cancel()">Annuler</ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="confirm()" [strong]="true">Enregistrer</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <h1>Nouvel enregistrement</h1>
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Titre</ion-label>
+      <ion-input [(ngModel)]="titre" name="titre" placeholder="De quoi s'agit-il ?"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Description</ion-label>
+      <ion-textarea
+        [(ngModel)]="description" name="description"
+        placeholder="Un mot sur cet enregistrement ?"
+        [clearOnEdit]="true"
+      ></ion-textarea>
+    </ion-item>
+    <ion-label style="margin-left: 10% ;margin-bottom: 10px ;color: grey; text-decoration: underline" position="fixed">Photos</ion-label>
+    <ion-item lines="none">
+      <ion-grid [fixed]="true">
+        <ion-row style="margin-bottom: 100px">
+          <ion-col class="img-record" *ngFor="let item of pictures;let i = index" size="6">
+
+
+              <ion-icon (click)="delete(i)"  style="position: absolute;top:0%;left: 0%; opacity: 0.8" name="close"></ion-icon>
+
+
+
+            <ion-img style="width: 80px; height: 80px;border-radius:10px"  [src]="item.webviewPath" ></ion-img>
+          </ion-col>
+          <ion-col class="" size="6">
+            <div>
+              <button style="padding: 30px;font-size: 35px;border-radius:10px" (click)="add()"> <ion-icon name="camera"></ion-icon></button>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
+</ion-content>

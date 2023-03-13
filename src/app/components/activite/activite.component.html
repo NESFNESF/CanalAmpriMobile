@@ -1,0 +1,135 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-item  ion-item  lines="none" >
+    <ion-card>
+      <ion-card-header id="h-c">
+        INFORMATION SUR L'ACTIVITE
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list [inset]="true">
+          <ion-item button detail="false">
+            <ion-label>
+              <h3>Responsable</h3>
+              <p>{{storageDbService.works[storageDbService.Activite].auteur.nom+" " + storageDbService.works[storageDbService.Activite].auteur.prenom}}</p>
+            </ion-label>
+          </ion-item>
+          <ion-item button detail="false">
+            <ion-label>
+              <h3>Devis ° </h3>
+              <p> {{storageDbService.works[storageDbService.Activite].numero_devis}}</p>
+            </ion-label>
+          </ion-item>
+          <ion-item button detail="false">
+            <ion-label>
+              <h3>Client</h3>
+              <p>{{storageDbService.works[storageDbService.Activite].nom_client +" "+Activite.prenom_client}}</p>
+            </ion-label>
+          </ion-item >
+          <ion-item button detail="false">
+            <ion-label>
+              <h3>Adresse Client</h3>
+              <p>{{storageDbService.works[storageDbService.Activite].adresse_client}}</p>
+            </ion-label>
+          </ion-item>
+          <ion-item button detail="false">
+            <ion-label>
+              <h3>Contact Client</h3>
+              <p>{{storageDbService.works[storageDbService.Activite].contact_client}}</p>
+            </ion-label>
+          </ion-item>
+
+          <ion-item button detail="false">
+            <ion-label>
+              <h3>Adresse du Chantier</h3>
+              <p>{{storageDbService.works[storageDbService.Activite].adresse_batiment}}</p>
+            </ion-label>
+          </ion-item>
+          <ion-item button detail="false">
+            <ion-label>
+              <h3>Référence</h3>
+              <p>{{storageDbService.works[storageDbService.Activite].reference}}</p>
+            </ion-label>
+          </ion-item>
+          <ion-item button detail="false">
+            <ion-label>
+              <h3>Code Postale</h3>
+              <p>{{storageDbService.works[storageDbService.Activite].code_postale}}</p>
+            </ion-label>
+          </ion-item>
+          <ion-item button detail="false">
+            <ion-label>
+              <h3>Ville</h3>
+              <p>{{storageDbService.works[storageDbService.Activite].ville}}</p>
+            </ion-label>
+          </ion-item>
+          <ion-item button detail="false">
+            <ion-label>
+              <h3>Contact sur le site</h3>
+              <p>{{storageDbService.works[storageDbService.Activite].contact_site}}</p>
+            </ion-label>
+          </ion-item>
+          <ion-item button detail="false">
+            <ion-label>
+              <h3>Date de début</h3>
+              <p>{{storageDbService.works[storageDbService.Activite].debut}}</p>
+            </ion-label>
+          </ion-item>
+          <ion-item button detail="false">
+            <ion-label>
+              <h3>Objet</h3>
+              <p>{{storageDbService.works[storageDbService.Activite].object}}</p>
+            </ion-label>
+          </ion-item >
+
+          <ion-item button detail="false">
+            <ion-label>
+              <h3>Description de l'activite</h3>
+              <p style="color: grey; text-align: justify" > <em> {{storageDbService.works[storageDbService.Activite].description}}</em></p>
+            </ion-label>
+          </ion-item >
+
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </ion-item>
+  <div >
+    <ion-list >
+      <ion-list-header>
+        <ion-label style="color: black ; margin-left: 5px">Interventions ({{storageDbService.works[storageDbService.Activite].interventions.length}})</ion-label>
+
+      </ion-list-header>
+      <ion-item *ngIf="storageDbService.works[storageDbService.Activite].interventions.length <=0">
+        <ion-img src="./assets/picture/boite.jpg"> </ion-img>
+      </ion-item>
+      <ion-item  ion-item *ngFor="let item of storageDbService.works[storageDbService.Activite].interventions;let i=index" >
+        <ion-card>
+          <ion-card-header>
+            Date : {{item.date}} <br>
+            Auteur : {{item.auteur.nom + " "+ item.auteur.prenom}} <br>
+            Type : {{item.description}}
+          </ion-card-header>
+          <ion-card-content>
+            <ion-grid>
+              <ion-row>
+                <ion-col *ngIf="storageDbService.user.role.role_id==1||storageDbService.user.role.role_id==3||storageDbService.user.role.role_id==4"  size="2" ><button style="background-color: darkred; color:white" (click)="pdf(storageDbService.works[storageDbService.Activite].travail_id,item.intervention_id)"  ion-button>  <ion-icon name="print"></ion-icon></button></ion-col>
+                <ion-col size="2" ><button (click)="delete(i)" style="background-color: var(--ion-color-danger); color:white"  ion-button> <ion-icon name="trash"></ion-icon></button></ion-col>
+                <ion-col size="auto" >  <ion-button fill="outline" (click)="navigateToLoad(i)"  >Enregistrements ({{storageDbService.works[storageDbService.Activite].interventions[i].enregistrements.length}})</ion-button>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-content>
+        </ion-card>
+      </ion-item>
+    </ion-list>
+  </div>
+  <div id="add" >
+    <button (click)="presentAlert()" id="add-btn"  ion-button> <ion-icon name="add"></ion-icon></button>
+  </div>
+</ion-content>
+

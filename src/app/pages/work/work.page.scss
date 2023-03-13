@@ -1,0 +1,12 @@
+ion-header{
+  ion-toolbar {
+    --background: var(--ion-color-primary);
+    color: white;
+    ion-label{
+      font-size: 70%;
+    }
+  }
+}
+ion-content{
+ // --ion-background-color: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5));
+}

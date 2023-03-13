@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button   (click)="cancel()">Annuler</ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="confirm()" [strong]="true">Enregistrer</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <h1>Configuration de l'utilisateur</h1>
+  <h3>{{storageDBService.userOption.nom + " "+storageDBService.userOption.prenom}}<span style="font-size: 12px; font-weight: bold"> ({{storageDBService.userOption.role.label}}) </span> </h3>
+  <ion-list>
+    <ion-item *ngIf="storageDBService.user.role.role_id==1">
+      <ion-label position="floating">Changer le role</ion-label>
+      <ion-select [value]="role" placeholder="Choisir le profil"  [(ngModel)]="role" name="role" >
+        <ion-select-option value=4>Collaborateur</ion-select-option>
+        <ion-select-option value=3>Sécretaire</ion-select-option>
+        <ion-select-option value=2>Employé </ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <ion-list *ngIf="role==2">
+    <ion-item lines="none" >
+      <ion-label >Liste des activités </ion-label>
+    </ion-item>
+    <ion-item *ngFor="let item of storageDBService.works;let i=index" lines="none" >
+     <div class="comp" [class.activeComp]="isMark(item)" (click)="addOr(item)">
+       <ion-label > Object : {{item.object}}</ion-label>
+       <ion-label > Client : {{item.nom_client + " " + item.prenom_client}}</ion-label>
+       <ion-label > Devis n° : {{item.numero_devis}}</ion-label>
+     </div>
+    </ion-item>
+  </ion-list>
+</ion-content>

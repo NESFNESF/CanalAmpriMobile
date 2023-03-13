@@ -1,1 +1,22 @@
 
+ion-tabs{
+--background: var(--ion-color-primary);
+      color: white;
+}
+ion-tab-bar{
+--background: var(--ion-color-primary);
+      color: white;
+}
+
+ion-icon {
+ color: white;
+}
+ion-badge{
+  border-radius: 100px;
+  padding: 2px;
+  --background: var(--ion-color-danger);
+}
+
+.tab-selected {
+  border-bottom: 5px solid #ffffff;
+}

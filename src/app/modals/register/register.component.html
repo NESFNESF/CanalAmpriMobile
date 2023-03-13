@@ -1,0 +1,53 @@
+
+<ion-header>
+  <ion-toolbar class="new-background-color">
+      <ion-title class="ion-text-center">
+          <ion-label>Nouveau compte</ion-label>
+      </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="content">
+
+
+  <div id="component-root">
+    <form>
+    <ion-item [class.input]="isSend" lines="none">
+      <ion-label position="floating">Votre nom</ion-label>
+      <ion-input  (mouseenter)="sendVoid()"  [(ngModel)]="nom" name="nom" type="text" placeholder="important"></ion-input>
+    </ion-item>
+    <ion-item [class.input]="isSend" lines="none">
+      <ion-label position="floating">Votre prénom</ion-label>
+      <ion-input  (mouseenter)="sendVoid()"  [(ngModel)]="prenom" name="prenom" type="text" placeholder="important"></ion-input>
+    </ion-item>
+    <ion-item [class.input]="isSend" lines="none">
+      <ion-label position="floating">Votre email</ion-label>
+      <ion-input  (mouseenter)="sendVoid()"  [(ngModel)]="email" name="email" type="text" placeholder="important"></ion-input>
+    </ion-item>
+      <ion-item [class.input]="isSend" lines="none">
+        <ion-label position="floating">Votre téléphone</ion-label>
+        <ion-input  (mouseenter)="sendVoid()"  [(ngModel)]="telephone" name="telephone" type="text" placeholder="important"></ion-input>
+      </ion-item>
+      <ion-item [class.input]="isSend" lines="none">
+        <ion-label position="floating">Votre mot de passe</ion-label>
+        <ion-input  (mouseenter)="sendVoid()"  [(ngModel)]="password" name="password" type="password" placeholder="important"></ion-input>
+      </ion-item>
+      <ion-button color="dark" (click)="register($event)" >S'enregistrer</ion-button>
+    <ion-popover #popover [isOpen]="isSend" >
+      <ng-template>
+        <ion-content class="ion-padding">identifiant de connexion invalide ! </ion-content>
+      </ng-template>
+    </ion-popover>
+      <br>
+    <div id="register">
+      <span>J'ai déjà un compte ? </span><span (click)="login()" id="reg">Se connecter</span>
+    </div>
+      </form>
+  </div>
+<div id="logo">
+  <ion-img src="/assets/logo/logo.png"  alt="canal ampri"></ion-img>
+</div>
+
+
+
+</ion-content>

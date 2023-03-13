@@ -1,0 +1,136 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button   (click)="cancel()">Annuler</ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="confirm()" [strong]="true">Enregistrer</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <h1> {{WorkAddOrEdit.statut==="add"? "Nouveau chantier":"Modifier le chantier"}} </h1>
+  <ion-list *ngIf="WorkAddOrEdit.statut==='add'">
+    <ion-item>
+      <ion-label position="floating">Nom Du Client</ion-label>
+      <ion-input placeholder="..."  [(ngModel)]="nom_client" name="nom_client"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Prénom Du Client</ion-label>
+      <ion-input placeholder="..."  [(ngModel)]="prenom_client" name="prenom_client"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Contact Du Client</ion-label>
+      <ion-input placeholder="..."  [(ngModel)]="contact_client" name="contact_client"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Adresse Du Client</ion-label>
+      <ion-input placeholder="..."  [(ngModel)]="adresse_client" name="adresse_client"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Adresse du Chantier</ion-label>
+      <ion-input placeholder="..."  [(ngModel)]="adresse_batiment" name="adresse_batiment"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Numéro Du Devis</ion-label>
+      <ion-input placeholder="..."  [(ngModel)]="numero_devis" name="numero_devis"></ion-input>
+    </ion-item>
+    <ion-item>
+
+        <ion-label position="floating">Référence</ion-label>
+      <ion-input placeholder="..."  [(ngModel)]="reference" name="reference"></ion-input>
+      </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Code Postale </ion-label>
+          <ion-input placeholder="ex.7501"  [(ngModel)]="code_postale" name="code_postale"></ion-input>
+        </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">Ville</ion-label>
+            <ion-input placeholder="ex.paris"  [(ngModel)]="ville" name="ville"></ion-input>
+          </ion-item>
+
+            <ion-item>
+              <ion-label position="floating">Contact de la personne dur le site</ion-label>
+              <ion-input placeholder="..."  [(ngModel)]="contact_site" name="contact_site"></ion-input>
+            </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Date de début</ion-label>
+      <ion-input type="date" required  [(ngModel)]="debut" name="debut"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Objet</ion-label>
+      <ion-input placeholder="..."  [(ngModel)]="object" name="object"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Description</ion-label>
+      <ion-textarea  [(ngModel)]="description" name="description"
+        placeholder="Un mot sur cette activité ?"
+        [clearOnEdit]="true"
+      ></ion-textarea>  </ion-item>
+  </ion-list>
+
+
+  <ion-list *ngIf="WorkAddOrEdit.statut==='edit'">
+    <ion-item>
+      <ion-label position="floating">Nom Du Client</ion-label>
+      <ion-input [value]="WorkAddOrEdit.data.nom_client"  placeholder="..."  [(ngModel)]="nom_client" name="nom_client"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Prénom Du Client</ion-label>
+      <ion-input [value]="WorkAddOrEdit.data.prenom_client"  placeholder="..."  [(ngModel)]="prenom_client" name="prenom_client"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Contact Du Client</ion-label>
+      <ion-input [value]="WorkAddOrEdit.data.contact_client"  placeholder="..."  [(ngModel)]="contact_client" name="contact_client"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Adresse Du Client</ion-label>
+      <ion-input [value]="WorkAddOrEdit.data.adresse_client"  placeholder="..."  [(ngModel)]="adresse_client" name="adresse_client"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Adresse du Chantier</ion-label>
+      <ion-input [value]="WorkAddOrEdit.data.adresse_batiment"  placeholder="..."  [(ngModel)]="adresse_batiment" name="adresse_batiment"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Numéro Du Devis</ion-label>
+      <ion-input [value]="WorkAddOrEdit.data.numero_devis"  placeholder="..."  [(ngModel)]="numero_devis" name="numero_devis"></ion-input>
+    </ion-item>
+    <ion-item>
+    <ion-label position="floating">Référence</ion-label>
+    <ion-input placeholder="..."  [(ngModel)]="reference" [value]="WorkAddOrEdit.data.reference" name="reference"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Code Postale </ion-label>
+      <ion-input placeholder="ex.7501"  [(ngModel)]="code_postale" [value]="WorkAddOrEdit.data.code_postale" name="code_postale"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Ville</ion-label>
+      <ion-input placeholder="ex.paris"  [(ngModel)]="ville" [value]="WorkAddOrEdit.data.ville" name="ville"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Contact de la personne dur le site</ion-label>
+      <ion-input placeholder="..."  [(ngModel)]="contact_site" [value]="WorkAddOrEdit.data.contact_site" name="contact_site"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Date de début</ion-label>
+      <ion-input [value]="WorkAddOrEdit.data.debut"  type="date" required  [(ngModel)]="debut" name="debut"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Objet</ion-label>
+      <ion-input [value]="WorkAddOrEdit.data.object"  placeholder="..."  [(ngModel)]="object" name="object"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Description</ion-label>
+      <ion-textarea  [(ngModel)]="description" name="description"
+                     placeholder="Un mot sur cette activité ?"
+                     [clearOnEdit]="true"
+                     [value]="WorkAddOrEdit.data.description"
+      ></ion-textarea>  </ion-item>
+  </ion-list>
+</ion-content>

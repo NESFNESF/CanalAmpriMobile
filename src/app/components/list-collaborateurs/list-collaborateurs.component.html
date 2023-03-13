@@ -1,0 +1,48 @@
+
+<div  >
+  <ion-list >
+    <ion-list-header>
+      <ion-label style="color: black ; margin-left: 5px">Collaborateurs ({{storageDbService.colaborateurs.length}})</ion-label>
+      <ion-button *ngIf="storageDbService.user.role.role_id==1" (click)="excel()" style="background-color: #128305;color: white;border-radius: 100px;padding: 5px" ><ion-icon  name="download"></ion-icon></ion-button>
+    </ion-list-header>
+    <ion-item  ion-item *ngFor="let item of storageDbService.colaborateurs" >
+      <ion-card>
+        <ion-card-header>
+          Nom : {{item.nom}} <br>
+          Prénom : {{item.prenom}}<br>
+          Email : {{item.email}}<br>
+          Téléphone : {{item.telephone}}
+        </ion-card-header>
+        <ion-card-content>
+          <ion-grid>
+            <ion-row *ngIf="item.role.role_id!=1||item.user_id!=storageDbService.user.user_id">
+              <ion-col *ngIf="storageDbService.user.role.role_id==1||storageDbService.user.role.role_id==4" size="1" ><button (click)="config(item)" style="background-color: var(--ion-color-warning); color:white" ion-button><ion-icon name="build"></ion-icon></button></ion-col>
+          <!--   <ion-col *ngIf="storageDbService.user.role.role_id==1"   size="1" ><button  (click)="delete()" style="background-color: var(&#45;&#45;ion-color-danger); color:white"  ion-button> <ion-icon name="trash"></ion-icon></button></ion-col>
+           --> </ion-row>
+            <ion-row *ngIf="item.user_id==storageDbService.user.user_id">
+              <ion-col>Mon compte</ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+        <div *ngIf="item.role.role_id==1" class="btn-work">
+          <ion-badge color="primary">{{item.role.label}}</ion-badge>
+        </div>
+        <div *ngIf="item.role.role_id==2" class="btn-work">
+          <ion-badge color="success">{{item.role.label}}</ion-badge>
+        </div>
+        <div *ngIf="item.role.role_id==3" class="btn-work">
+          <ion-badge color="warning">{{item.role.label}}</ion-badge>
+        </div>
+        <div *ngIf="item.role.role_id==4" class="btn-work">
+          <ion-badge color="dark">{{item.role.label}}</ion-badge>
+        </div>
+        <div  class="profil">
+          <img style="height: 110px;width: 110px;" src="{{item.profil!=null?host+'/' +item.profil:'./assets/picture/profile-icon-design-free-vector.jpg'}}"/>
+        </div>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+
+
+</div>
+

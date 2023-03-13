@@ -1,0 +1,75 @@
+
+<div *ngIf="!isArchive">
+  <ion-list>
+    <ion-list-header>
+      <ion-label  style="color: black ; margin-left: 5px">Chantiers ({{works.length}})</ion-label>
+      <ion-button (click)="vueArchive()" style="background-color: var(--ion-color-secondary);color: white;border-radius: 100px;padding: 5px" >Archives({{worksArchive.length}})</ion-button>
+      <ion-button *ngIf="storageDbService.user.role.role_id==1" (click)="excel()" style="background-color: #128305;color: white;border-radius: 100px;padding: 5px" ><ion-icon  name="download"></ion-icon></ion-button>
+    </ion-list-header>
+    <ion-item  ion-item *ngFor="let item of works;let i=index" >
+      <ion-card>
+        <ion-card-header>
+            Début : {{item.debut}} <br>
+          Objet : {{item.object}}<br>
+          Client : {{item.nom_client + " " + item.prenom_client}}<br>
+          Adresse du chantier : {{item.adresse_batiment}}<br>
+          Devis n° : {{item.numero_devis}}
+        </ion-card-header>
+        <ion-card-content>
+          <ion-grid>
+            <ion-row>
+              <ion-col *ngIf="storageDbService.user.role.role_id==1||storageDbService.user.role.role_id==3||storageDbService.user.role.role_id==4" size="1" ><button  (click)="addOrEdit('edit',item.val)" style="background-color: var(--ion-color-warning); color:white" ion-button> <ion-icon name="pencil"></ion-icon></button></ion-col>
+              <ion-col  *ngIf="!item.isFinish||storageDbService.user.role.role_id==1||storageDbService.user.role.role_id==4" size="1" ><button (click)="archiver(item,item.val)" style="background-color: var(--ion-color-secondary); color:white"  ion-button> <ion-icon name="archive"></ion-icon></button></ion-col>
+              <ion-col *ngIf="storageDbService.user.role.role_id==1||storageDbService.user.role.role_id==4"  size="1" ><button  (click)="delete(item.val)" style="background-color: var(--ion-color-danger); color:white"  ion-button> <ion-icon name="trash"></ion-icon></button></ion-col>
+              <ion-col size="1" >  <ion-button (click)="detail(item.val)"  routerLink="/work/home/activites/{{item.travail_id}}" >Interventions ({{item.interventions?item.interventions.length:"0"}})</ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+        <div *ngIf="item.isFinish"  class="btn-work">
+          <ion-badge color="success">Terminer</ion-badge>
+        </div>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+
+
+</div>
+
+<div *ngIf="isArchive">
+  <ion-list>
+    <ion-list-header>
+      <ion-label  style="color: black ; margin-left: 5px">Archives ({{worksArchive.length}})</ion-label>
+      <ion-button (click)="vueArchive()" style="background-color: var(--ion-color-primary);color: white;border-radius: 100px;padding: 5px" >Chantiers({{works.length}})</ion-button>
+    </ion-list-header>
+    <ion-item  ion-item *ngFor="let item of worksArchive;let i=index" >
+      <ion-card>
+        <ion-card-header>
+          Début : {{item.debut}} <br>
+          Objet : {{item.object}}<br>
+          Client : {{item.nom_client + " " + item.prenom_client}}<br>
+          Adresse du chantier : {{item.adresse_batiment}}<br>
+          Devis n° : {{item.numero_devis}}
+        </ion-card-header>
+        <ion-card-content>
+          <ion-grid>
+            <ion-row>
+            <ion-col *ngIf="storageDbService.user.role.role_id==1||storageDbService.user.role.role_id==4" size="1" ><button (click)="archiver(item,item.val)" style="background-color: var(--ion-color-tertiary); color:white"  ion-button> <ion-icon name="arrow-undo"></ion-icon></button></ion-col>
+              <ion-col *ngIf="storageDbService.user.role.role_id==1||storageDbService.user.role.role_id==4" size="1" ><button  (click)="delete(item.val)" style="background-color: var(--ion-color-danger); color:white"  ion-button> <ion-icon name="trash"></ion-icon></button></ion-col>
+              <ion-col size="1" >  <ion-button [disabled]="storageDbService.user.role.role_id==2||storageDbService.user.role.role_id==4" (click)="detail(item.val)"  routerLink="/work/home/activites/{{item.travail_id}}" >Interventions ({{item.interventions?item.interventions.length:"0"}})</ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+        <div *ngIf="item.isFinish"  class="btn-work">
+          <ion-badge color="success">terminer</ion-badge>
+        </div>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+
+
+</div>
+<div *ngIf="storageDbService.user.role.role_id==1||storageDbService.user.role.role_id==3" id="add" (click)="addOrEdit('add')">
+  <button id="add-btn" ion-button> <ion-icon name="add"></ion-icon></button>
+</div>

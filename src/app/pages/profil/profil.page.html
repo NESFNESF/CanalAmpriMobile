@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Profil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<div id="head-top">
+
+</div>
+  <div id="head-img">
+    <ion-label *ngIf="storageDbService.user.profil" (click)="delete()" style="position: absolute;bottom: 0%;left: 0%" ><button style="background-color: rgb(255,255,255); color: #da0d0d; font-size: 25px; border-radius: 10px; padding: 1px" ion-button><ion-icon name="trash"></ion-icon></button> </ion-label>
+
+    <ion-label (click)="takePicture()" style="position: absolute;bottom: 0%;right: 0%" ><button style="background-color: rgb(255,255,255); color: #0d86da; font-size: 25px; border-radius: 10px; padding: 1px" ion-button><ion-icon name="image"></ion-icon></button> </ion-label>
+    <img  src="{{storageDbService.user.profil!=null?host+'/' +storageDbService.user.profil:'./assets/picture/profile-icon-design-free-vector.jpg'}}"/>
+  </div>
+  <div id="head-role">
+
+    <ion-item style="--background: none" lines="none">
+      <ion-badge  *ngIf="user.role.role_id==1" slot="end"color="primary">{{user.role.label}}</ion-badge>
+      <ion-badge  *ngIf="user.role.role_id==2" slot="end"color="success">{{user.role.label}}</ion-badge>
+      <ion-badge  *ngIf="user.role.role_id==3" slot="end"color="warning">{{user.role.label}}</ion-badge>
+      <ion-badge  *ngIf="user.role.role_id==4" slot="end"color="dark">{{user.role.label}}</ion-badge>
+
+    </ion-item>
+  </div>
+  <div id="body-top">
+    <ion-list lines="full">
+      <ion-item>
+        <ion-label class="user-detail">Nom </ion-label>
+        <ion-label class="user-value" slot="end">{{user.nom}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label class="user-detail">Prénom </ion-label>
+        <ion-label class="user-value" slot="end">{{user.prenom}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label class="user-detail">Email </ion-label>
+        <ion-label class="user-value" slot="end">{{user.email}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label class="user-detail">Téléphone </ion-label>
+        <ion-label class="user-value" slot="end">{{user.telephone}}</ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <ion-button (click)="logout()" style="margin-top: 50px; margin-bottom: 5px; margin-left: 20px;margin-right: 20px" expand="block">Déconnexion</ion-button>
+</ion-content>
+

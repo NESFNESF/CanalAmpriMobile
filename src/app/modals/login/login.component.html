@@ -1,0 +1,43 @@
+
+<ion-header>
+  <ion-toolbar class="new-background-color">
+      <ion-title class="ion-text-center">
+          <ion-label>Connexion</ion-label>
+      </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="content">
+
+  <div id="component-root">
+    <form>
+      <ion-item [class.input]="isSend" lines="none">
+        <ion-label position="floating">téléhpone ou email</ion-label>
+        <ion-input   name="email"  (mouseenter)="sendVoid()"  [(ngModel)]="emailOrPhone" required type="text" placeholder="important"></ion-input>
+      </ion-item>
+      <ion-item [class.input]="isSend" lines="none">
+        <ion-label position="floating">mot de passe</ion-label>
+        <ion-input  name="password"  (mouseenter)="sendVoid()" [(ngModel)]="password"  type="password" placeholder="important"></ion-input>
+      </ion-item>
+      <ion-button color="dark" [disabled]="isLoad" (click)="login($event)" type="submit" >Se connecter</ion-button>
+      <ion-popover #popover [isOpen]="isSend" >
+        <ng-template>
+          <ion-content class="ion-padding">identifiant de connexion invalide ! </ion-content>
+        </ng-template>
+      </ion-popover>
+      <br>
+    </form>
+
+
+    <div id="register">
+      <span>Pas de compte ? </span><span (click)="register()" id="reg">S'enregistrer</span>
+    </div>
+  </div>
+
+
+<div id="logo">
+  <ion-img src="/assets/logo/logo.png"  alt="canal ampri"></ion-img>
+</div>
+
+
+</ion-content>

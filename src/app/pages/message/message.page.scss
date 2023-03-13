@@ -1,0 +1,9 @@
+ion-header{
+  ion-toolbar {
+    --background: var(--ion-color-primary);
+    color: white;
+    ion-label{
+      font-size: 70%;
+    }
+  }
+}
