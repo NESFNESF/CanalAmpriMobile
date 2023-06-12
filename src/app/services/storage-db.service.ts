@@ -22,11 +22,12 @@ export class StorageDBService {
   colaborateurs : any = [];
   isLoad : boolean = false;
   userOption : any;
+  searchWork : string = "";
+  searchUser : string = "";
   constructor(/*private storage: Storage*/ public loadingCtrl: LoadingController,) {
     this.loadToken()
   }
  isLoggedIn() {
-
     return  localStorage.getItem("user")
   }
   async loadToken(){

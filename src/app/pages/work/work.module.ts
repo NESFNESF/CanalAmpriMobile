@@ -13,7 +13,7 @@ import {ActiviteComponent} from "../../components/activite/activite.component";
 import {EnregistrementComponent} from "../../components/enregistrement/enregistrement.component";
 import {AddEnregistrementComponent} from "../../components/add-enregistrement/add-enregistrement.component";
 import {PdfViewerComponent} from "ng2-pdf-viewer";
-
+import {FilterWorkPipe} from "../../pipes/filter-work.pipe";
 @NgModule({
   imports: [
     CommonModule,
@@ -22,6 +22,6 @@ import {PdfViewerComponent} from "ng2-pdf-viewer";
     WorkPageRoutingModule,
   ],
 
-  declarations: [WorkPage, TravauxComponent,AddWorkComponent,ActiviteComponent,EnregistrementComponent,AddEnregistrementComponent]
+  declarations: [FilterWorkPipe,WorkPage, TravauxComponent,AddWorkComponent,ActiviteComponent,EnregistrementComponent,AddEnregistrementComponent]
 })
 export class WorkPageModule {}

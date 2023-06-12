@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {StorageDBService} from "../../services/storage-db.service";
 
 @Component({
   selector: 'app-collaborateurs',
@@ -7,9 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CollaborateursPage implements OnInit {
 
-  constructor() { }
-
+  constructor(    public storageDbService : StorageDBService) { }
   ngOnInit() {
   }
-
 }

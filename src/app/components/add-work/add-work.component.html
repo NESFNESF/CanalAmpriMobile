@@ -20,7 +20,7 @@
       <ion-input placeholder="..."  [(ngModel)]="prenom_client" name="prenom_client"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="floating">Contact Du Client</ion-label>
+      <ion-label position="floating">Contact Du Client(Format + Numéro)</ion-label>
       <ion-input placeholder="..."  [(ngModel)]="contact_client" name="contact_client"></ion-input>
     </ion-item>
     <ion-item>
@@ -28,16 +28,7 @@
       <ion-input placeholder="..."  [(ngModel)]="adresse_client" name="adresse_client"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="floating">Adresse du Chantier</ion-label>
-      <ion-input placeholder="..."  [(ngModel)]="adresse_batiment" name="adresse_batiment"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Numéro Du Devis</ion-label>
-      <ion-input placeholder="..."  [(ngModel)]="numero_devis" name="numero_devis"></ion-input>
-    </ion-item>
-    <ion-item>
-
-        <ion-label position="floating">Référence</ion-label>
+        <ion-label position="floating">Raison Social</ion-label>
       <ion-input placeholder="..."  [(ngModel)]="reference" name="reference"></ion-input>
       </ion-item>
 
@@ -52,11 +43,11 @@
           </ion-item>
 
             <ion-item>
-              <ion-label position="floating">Contact de la personne dur le site</ion-label>
+              <ion-label position="floating">Contact sur le site</ion-label>
               <ion-input placeholder="..."  [(ngModel)]="contact_site" name="contact_site"></ion-input>
             </ion-item>
 
-    <ion-item>
+<!--    <ion-item>
       <ion-label position="stacked">Date de début</ion-label>
       <ion-input type="date" required  [(ngModel)]="debut" name="debut"></ion-input>
     </ion-item>
@@ -69,7 +60,7 @@
       <ion-textarea  [(ngModel)]="description" name="description"
         placeholder="Un mot sur cette activité ?"
         [clearOnEdit]="true"
-      ></ion-textarea>  </ion-item>
+      ></ion-textarea>  </ion-item>-->
   </ion-list>
 
 
@@ -83,23 +74,23 @@
       <ion-input [value]="WorkAddOrEdit.data.prenom_client"  placeholder="..."  [(ngModel)]="prenom_client" name="prenom_client"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="floating">Contact Du Client</ion-label>
+      <ion-label position="floating">Contact Du Client(Format + Numéro)</ion-label>
       <ion-input [value]="WorkAddOrEdit.data.contact_client"  placeholder="..."  [(ngModel)]="contact_client" name="contact_client"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Adresse Du Client</ion-label>
       <ion-input [value]="WorkAddOrEdit.data.adresse_client"  placeholder="..."  [(ngModel)]="adresse_client" name="adresse_client"></ion-input>
     </ion-item>
-    <ion-item>
+<!--    <ion-item>
       <ion-label position="floating">Adresse du Chantier</ion-label>
       <ion-input [value]="WorkAddOrEdit.data.adresse_batiment"  placeholder="..."  [(ngModel)]="adresse_batiment" name="adresse_batiment"></ion-input>
-    </ion-item>
-    <ion-item>
+    </ion-item>-->
+<!--    <ion-item>
       <ion-label position="floating">Numéro Du Devis</ion-label>
       <ion-input [value]="WorkAddOrEdit.data.numero_devis"  placeholder="..."  [(ngModel)]="numero_devis" name="numero_devis"></ion-input>
-    </ion-item>
+    </ion-item>-->
     <ion-item>
-    <ion-label position="floating">Référence</ion-label>
+    <ion-label position="floating">Raison Social</ion-label>
     <ion-input placeholder="..."  [(ngModel)]="reference" [value]="WorkAddOrEdit.data.reference" name="reference"></ion-input>
     </ion-item>
 
@@ -114,10 +105,10 @@
     </ion-item>
 
     <ion-item>
-      <ion-label position="floating">Contact de la personne dur le site</ion-label>
+      <ion-label position="floating">Contact sur le site</ion-label>
       <ion-input placeholder="..."  [(ngModel)]="contact_site" [value]="WorkAddOrEdit.data.contact_site" name="contact_site"></ion-input>
     </ion-item>
-    <ion-item>
+<!--    <ion-item>
       <ion-label position="stacked">Date de début</ion-label>
       <ion-input [value]="WorkAddOrEdit.data.debut"  type="date" required  [(ngModel)]="debut" name="debut"></ion-input>
     </ion-item>
@@ -131,6 +122,6 @@
                      placeholder="Un mot sur cette activité ?"
                      [clearOnEdit]="true"
                      [value]="WorkAddOrEdit.data.description"
-      ></ion-textarea>  </ion-item>
+      ></ion-textarea>  </ion-item>-->
   </ion-list>
 </ion-content>

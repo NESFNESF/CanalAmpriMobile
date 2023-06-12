@@ -25,13 +25,11 @@ export class AddWorkComponent implements OnInit {
   nom_client: any = "";
   prenom_client: any = "";
   contact_client: any = "";
-
   reference: any = "";
   code_postale: any = "";
   contact_site: any = "";
   ville: any = "";
   WorkAddOrEdit : any;
-
   type_batiment = [
 
   ]

@@ -17,6 +17,7 @@ export class PictureServiceService {
   //public Ophoto: Photo;
   constructor(platform: Platform) {
     this.platform = platform;
+
   }
  /* public clear(){
     Storage.remove({
@@ -25,10 +26,22 @@ export class PictureServiceService {
   }
 */
 
+
+  chekPermission(){
+    Camera.checkPermissions().then( dat=>{
+      if(dat.photos!="granted"){
+        Camera.checkPermissions().then(dta2=>{
+          console.log(dta2)
+        })
+      }
+    })
+  }
+
+
   public async takePicture (){
     const image = await Camera.getPhoto({
       quality: 10,
-      allowEditing: true,
+     // allowEditing: true,
       source : CameraSource.Camera,
       resultType: CameraResultType.Uri
     });

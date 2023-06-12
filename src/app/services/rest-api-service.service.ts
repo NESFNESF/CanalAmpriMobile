@@ -133,6 +133,15 @@ export class RestApiServiceService {
     };
     return  this.httpClientMethod(this.url+ 'works/isFinish','post',work,httpOptionWithAuth)
   }
+  saveFile(file: any): Observable<any>{
+    const httpOptionWithAuth ={
+      headers: new HttpHeaders({
+
+        'Accept':'application/json',
+        'Authorization' : 'Bearer '+ this.storageDBService.token})
+    };
+    return  this.httpClientMethod(this.url+ 'loads/save','post',file,httpOptionWithAuth)
+  }
   removeWork(work: any): Observable<any>{
     const httpOptionWithAuth ={
       headers: new HttpHeaders({'Content-Type':'application/x-www-form-urlencoded; charset=utf-8',

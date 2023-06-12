@@ -19,6 +19,7 @@ export class ActiviteComponent implements OnInit {
   isSend : boolean = false;
   isLoad : boolean = false;
   user : any;
+  employers : any = [];
   constructor(private modalCtrl: ModalController,
               private alertController: AlertController,
               public storageDbService : StorageDBService,
@@ -32,7 +33,14 @@ export class ActiviteComponent implements OnInit {
 
   ngOnInit() {
     this.Activite = this.storageDbService.Activite;
-
+    if(this.storageDbService.user.role.role_id==2){
+      this.employers =this.storageDbService.works[this.Activite].interventions.filter((item:any)=>{
+        if(!item.person){
+          return false;
+        }
+        return item.person.user_id==this.storageDbService.user.user_id;
+      });
+    }
   }
 
 

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-import { IonicStorageModule } from '@ionic/storage-angular';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -18,7 +17,8 @@ import {HttpClientModule} from "@angular/common/http";
 import { Network } from '@capacitor/network';
 import {FormsModule} from "@angular/forms";
 import {InAppBrowser} from "@awesome-cordova-plugins/in-app-browser/ngx";
-import {PdfViewerComponent} from "ng2-pdf-viewer";
+
+//import {PdfViewerComponent} from "ng2-pdf-viewer";*/
 
 Network.addListener('networkStatusChange', status => {
   if (status.connected == false){
@@ -29,22 +29,23 @@ Network.addListener('networkStatusChange', status => {
 
 
 @NgModule({
-  declarations: [AppComponent,LoginComponent,RegisterComponent],
+  declarations: [AppComponent, LoginComponent, RegisterComponent],
   imports: [BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    IonicStorageModule.forRoot({
-      name: '__mydb',
-      driverOrder: ['indexeddb', 'sqlite', 'websql']
-    }),
+    /*    IonicStorageModule.forRoot({
+          name: '__mydb',
+          driverOrder: ['indexeddb', 'sqlite', 'websql']
+        }),*/
     WorkPageModule,
     ProfilPageModule,
     MessagePageModule,
     CollaborateursPageModule
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },InAppBrowser ],
+  providers: [{provide: RouteReuseStrategy, useClass: IonicRouteStrategy}, InAppBrowser],
   bootstrap: [AppComponent],
+
 })
 export class AppModule {}

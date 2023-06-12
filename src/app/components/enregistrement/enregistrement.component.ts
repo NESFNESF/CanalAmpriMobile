@@ -90,8 +90,10 @@ export class EnregistrementComponent implements OnInit {
       .set("user_id",this.user.user_id)
       .set('enregistrement_id',this.storageDbService.works[this.storageDbService.Activite].interventions[this.storageDbService.Intervention].enregistrements[data].enregistrement_id)
       .set('grant_type', 'password');
+    console.log(load)
     this.restApiService.removeLoad(load).subscribe( async res => {
       if(res){
+        console.log(res)
         loading.dismiss();
         this.isLoad = true;
       }else {

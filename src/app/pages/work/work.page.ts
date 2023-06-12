@@ -10,7 +10,7 @@ import {alert} from "ionicons/icons";
 export class WorkPage implements OnInit {
  user:any;
   constructor(
-    private storageDbService : StorageDBService) {
+    public storageDbService : StorageDBService) {
 
 
 

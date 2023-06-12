@@ -9,6 +9,7 @@ import { CollaborateursPageRoutingModule } from './collaborateurs-routing.module
 import { CollaborateursPage } from './collaborateurs.page';
 import {ListCollaborateursComponent} from "../../components/list-collaborateurs/list-collaborateurs.component";
 import {AddCollaborateurComponent} from "../../components/add-collaborateur/add-collaborateur.component";
+import {FilterUserPipe} from "../../pipes/filter-user.pipe";
 
 @NgModule({
   imports: [
@@ -17,6 +18,6 @@ import {AddCollaborateurComponent} from "../../components/add-collaborateur/add-
     IonicModule,
     CollaborateursPageRoutingModule,
   ],
-  declarations: [CollaborateursPage, ListCollaborateursComponent,AddCollaborateurComponent]
+  declarations: [CollaborateursPage, ListCollaborateursComponent,AddCollaborateurComponent,FilterUserPipe]
 })
 export class CollaborateursPageModule {}

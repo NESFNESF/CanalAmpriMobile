@@ -4,7 +4,7 @@
       <ion-button   (click)="cancel()">Annuler</ion-button>
     </ion-buttons>
     <ion-buttons slot="end">
-      <ion-button (click)="confirm()" [strong]="true">Enregistrer</ion-button>
+      <ion-button (click)="confirm2()" [strong]="true">Enregistrer</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -38,7 +38,7 @@
           </ion-col>
           <ion-col class="" size="6">
             <div>
-              <button style="padding: 30px;font-size: 35px;border-radius:10px" (click)="add()"> <ion-icon name="camera"></ion-icon></button>
+              <button style="padding: 30px;font-size: 35px;border-radius:10px" (click)="takePictureGallery()"> <ion-icon name="camera"></ion-icon></button>
             </div>
           </ion-col>
         </ion-row>
